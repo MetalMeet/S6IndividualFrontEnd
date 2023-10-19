@@ -24,7 +24,7 @@ const Home = () => {
     };
 
     axios
-      .get(`https://localhost:44371/user`, config)
+      .get(`https://localhost:44301/user`, config)
       .then((res) => {
         const user = res.data;
         setUser(user);
