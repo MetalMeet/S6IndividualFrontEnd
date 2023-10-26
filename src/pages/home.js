@@ -24,7 +24,7 @@ const Home = () => {
     };
 
     axios
-      .get(`https://localhost:44337/api/event`, config)
+      .post(`https://localhost:44337/api/friendship`,{}, config)
       .then((res) => {
         const user = res.data;
         setUser(user);
