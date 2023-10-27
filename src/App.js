@@ -5,6 +5,7 @@ import Login from './pages/login';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from './components/header';
 import {loggedIn, firebaseObserver} from "./config/firebase";
+import Events from './pages/events';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
               <Routes>                                                                        
                 <Route path="/signup" element={<Signup/>}/>
                 <Route path="/login" element={<Login/>}/>
+                <Route path="/events" authenticated={authenticated} element={<Events/>}/>
                 <Route path="*" element={<Home/>}/>
               </Routes>
         </BrowserRouter>               
