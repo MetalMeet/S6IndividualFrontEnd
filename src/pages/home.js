@@ -47,6 +47,9 @@ const Home = () => {
       ) : (
         <div>user not logged in.</div>
       )}
+      <div>
+      {process.env.REACT_APP_APIKEY}
+      </div>
     </div>
   );
 };

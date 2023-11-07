@@ -12,23 +12,23 @@ const Events = (props) => {
 
     useEffect(() => {
         async function fetchData() {
-        const authenticated = props.authenticated;
-        const token = await auth.currentUser.getIdToken();
-        const config = {
-            headers: { Authorization: `Bearer ${token}` },
-        };
+            const authenticated = props.authenticated;
+            const token = await auth.currentUser.getIdToken();
+            const config = {
+                headers: { Authorization: `Bearer ${token}` },
+            };
 
-        axios
-        .get(`https://localhost:44337/api/event?start=0&end=10`, config)
-        .then((res) => {
-            const events = res.data;
-            setEvents(events);
-            setIsLoading(false);
-        })
-        .catch((error) => {
-            console.log(error);
-            setError(error);
-        });
+            axios
+            .get(`https://localhost:44337/api/event?start=0&end=10`, config)
+            .then((res) => {
+                const events = res.data;
+                setEvents(events);
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+                setError(error);
+            });
         }
         if(auth.currentUser){
             fetchData();
