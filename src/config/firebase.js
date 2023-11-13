@@ -12,7 +12,22 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+
+export const auth = getAuth(app).projectConfigManager().updateProjectConfig({
+  passwordPolicyConfig: {
+    enforcementState: 'ENFORCE',
+    forceUpgradeOnSignin: true,
+    constraints: {
+      requireUppercase: true,
+      requireLowercase: true,
+      requireNonAlphanumeric: true,
+      requireNumeric: true,
+      minLength: 8,
+      maxLength: 64,
+    },
+  },
+});
+
 export const firebaseObserver = ReactObserver();
 
 auth.onAuthStateChanged(function (user) {
