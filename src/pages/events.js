@@ -18,8 +18,10 @@ const Events = (props) => {
                 headers: { Authorization: `Bearer ${token}` },
             };
 
+            let url = process.env.REACT_APP_APPGATEWAY_URL + `/event?start=0&end=10`;
+
             axios
-            .get(`https://localhost:44337/api/event?start=0&end=10`, config)
+            .get(url, config)
             .then((res) => {
                 const events = res.data;
                 setEvents(events);
